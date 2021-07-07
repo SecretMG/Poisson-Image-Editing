@@ -61,6 +61,16 @@
 
 ## Coding
 
+- 文件目录结构
+  - docs：存放报告文档
+  - imgs：存放使用的图像
+  - source：存放工程代码
+    - utils：存放实验参数以及各种脚本。
+      - `args.py`：实验参数，供main.py使用
+      - `createMask.py`：生成mask的脚本。
+    - `main.py`：主函数，进行泊松编辑
+    - `PIE.py`：泊松编辑的实现类
+
 1. 第一个问题，贴图内部像素值太大，且边缘有毛刺。
 
    ![bug1](docs/figs/bug1.jpg)
@@ -79,11 +89,41 @@
 
 5. 检查其它图片示例的代码正确性。
 
-   ![更换示例](docs/figs/更换示例.jpg)
+   1. mona
+   
+      <img src="docs/figs/mona.jpg">
+   
+   2. sealion
+   
+      ![sealion](docs/figs/sealion.jpg)
+   
+   3. bear
+   
+      ![bear](docs/figs/bear.jpg)
+   
+   4. eagle
+   
+      ![eagle](docs/figs/eagle.jpg)
+
+6. 制作mask绘制工具
+
+   1. 首先读入一张source图片并显示。
+
+   2. 捕获用户鼠标动作，用户长按鼠标左键进行拖拽，绘制出轮廓线。
+
+      ![绘制轮廓](docs/figs/绘制轮廓.jpg)
+
+   3. 用户释放鼠标左键后，生成mask图片，并存储。
+
+      ![生成mask](docs/figs/生成mask.jpg)
+
+   4. 验证生成mask的正确性。
+
+      ![验证生成mask的正确性](docs/figs/验证生成mask的正确性.jpg)
 
 ## Conclusion
 
-- 从飞机的融合图片可以看出来贴图周围有明显的泛白，但是鹰的融合图片又没有这个问题，应继续对数值运算部分进行debug。
+- ~~从飞机的融合图片可以看出来贴图周围有明显的泛白，但是鹰的融合图片又没有这个问题，应继续对数值运算部分进行debug。~~通过使用mask生成工具进行验证，发现飞机的周围的泛白是原图飞机周围的云雾，由于原图的mask不够精细，贴图时引入了目标图中本不存在的云雾。
 
 ## References
 
@@ -91,4 +131,5 @@
 - [从泊松方程的解法，聊到泊松图像融合](https://zhuanlan.zhihu.com/p/68349210)
 - [Seamless cloning](https://blog.csdn.net/hjimce/article/details/45716603)
 - [Code of huajh](https://github.com/huajh/Poisson_image_editing)
+- [opencv鼠标绘图](https://blog.csdn.net/tengfei461807914/article/details/62438959)
 

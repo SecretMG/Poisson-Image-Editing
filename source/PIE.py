@@ -47,6 +47,9 @@ class PIE():
 
         self.fusion = self.target_img
 
+        cv.imshow('source', self.source_img)
+        cv.imshow('target', self.target_img)
+
 
     def check_mask(self, px):
         return px >= 255 / 2
